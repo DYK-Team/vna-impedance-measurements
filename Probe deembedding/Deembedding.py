@@ -151,11 +151,19 @@ np.savetxt(folder + '\\' + 'Probe_1_phase_initial.CSV', phaseoutput, delimiter=d
 print('The probe 1 initial phase has been saved in Probe_1_phase_initial.csv')
 print('')
 
+input("""Now open Probe_1_phase_initial.CSV and check at which value, pi/2 (~1.5) or pi (~3), the phase jumps.
+Later, choose the phase factor 1 if the phase jumps at pi/2, and the phase factor 2 if the phase jumps at pi.
+Push Enter when finish reading.""")
+print('')
+
+phase_factor = int(input("Please enter the phase factor (1 or 2) as explained above: "))
+print('')
+
 number_jumps = jumps(realTrans, imagTrans)
 if number_jumps == 0:
     slopesign = np.sign(phase[int(len(Stimulus) / 2.0)])
 else:
-    slopesign, dt, unwrapped_phase = unwrap(Stimulus, realTrans, imagTrans)  # phase unwrapping
+    slopesign, dt, unwrapped_phase, initial_phase = unwrap(Stimulus, realTrans, imagTrans, phase_factor)  # phase unwrapping
     unwrappedphaseoutput = np.column_stack((Stimulus, unwrapped_phase))  # 2D array
     np.savetxt(folder + '\\' + 'Probe_1_phase_unwrapped.CSV', unwrappedphaseoutput, delimiter=delimoutput)
     print('The probe 1 unwrapped phase has been saved in Probe_1_phase_unwrapped.csv')
@@ -260,7 +268,7 @@ if probe_flag == 2:
     if number_jumps == 0:
         slopesign = np.sign(phase[int(len(Stimulus) / 2.0)])
     else:
-        slopesign, dt, unwrapped_phase = unwrap(Stimulus, realTrans, imagTrans)  # phase unwrapping
+        slopesign, dt, unwrapped_phase, initial_phase = unwrap(Stimulus, realTrans, imagTrans, phase_factor)  # phase unwrapping
         unwrappedphaseoutput = np.column_stack((Stimulus, unwrapped_phase))  # 2D array
         np.savetxt(folder + '\\' + 'Probe_2_phase_unwrapped.CSV', unwrappedphaseoutput, delimiter=delimoutput)
         print('The probe 2 unwrapped phase has been saved in Probe_2_phase_unwrapped.csv')

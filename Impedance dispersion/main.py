@@ -2,8 +2,7 @@
 # Calculation of the impedance dispersion from the measured and corrected S11 or S21
 # The delay time along the sample will be required to correct S11/S22.
 #
-# Yujie Zhao, University of St. Andrews, Scotland, 18 March 2022
-# Dmitriy Makhnovskiy, Sensing Materials Technology Ltd, UK
+# 18 March 2022
 # DYK team: http://dykteam.com/
 #
 

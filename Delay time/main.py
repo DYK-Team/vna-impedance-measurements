@@ -5,8 +5,7 @@
 # coaxial probe, waveguide structure, or free space) using the unwrapped phase of the S11 or S21 parameter
 # measured on VNA.
 #
-# Yujie Zhao, University of St. Andrews, Scotland, 11 March 2022
-# Dmitriy Makhnovskiy, Sensing Materials Technology Ltd, UK
+# 11 March 2022
 # DYK team: http://dykteam.com/
 #
 
@@ -57,6 +56,12 @@ np.savetxt(folder + '\\' + 'Phase_initial.CSV', phaseoutput, delimiter=',')
 print('The initial phase has been saved in Phase_initial.csv')
 print('')
 
+input("""Now the program will draw the initial phase dispersion before unwrapping.
+Note at which value, pi/2 (~1.5) or pi (~3), the phase jumps.
+Later, choose the phase factor 1 if the phase jumps at pi/2, and the phase factor 2 if the phase jumps at pi.
+Push Enter when finish reading.""")
+print('')
+
 font1 = {'family': 'serif', 'color': 'black', 'weight': 'bold', 'size': 15}
 font2 = {'family': 'serif', 'color': 'black', 'weight': 'normal', 'size': 10}
 plt.plot(Stimulus0, Ph0, 'k')
@@ -65,7 +70,8 @@ plt.xlabel('Frequency, Hz', fontdict=font2)
 plt.ylabel('Phase, radians', fontdict=font2)
 plt.show()
 
-print('')
+phase_factor = int(input('Please enter the phase factor (1 or 2), as explained above: '))
+
 flag = 0
 while flag == 0:
     fstart = np.double(input('Enter the start frequency in Hz: '))
@@ -107,7 +113,7 @@ plt.xlabel('Frequency, Hz', fontdict=font2)
 plt.ylabel('Phase, radians', fontdict=font2)
 plt.show()
 
-slopesign, dt, unwrapped_phase = unwrap(Stimulus, Re, Im)  # phase unwrapping
+slopesign, dt, unwrapped_phase, initial_phase = unwrap(Stimulus, Re, Im, phase_factor)  # phase unwrapping
 unwrappedphaseoutput = np.column_stack((Stimulus, unwrapped_phase))  # 2D array
 np.savetxt(folder + '\\' + 'Phase_unwrapped.csv', unwrappedphaseoutput, delimiter=',')
 

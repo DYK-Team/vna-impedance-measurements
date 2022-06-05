@@ -12,8 +12,7 @@
 # All S-parameters are measured.
 # With the created S2P files of the probes, they can be deembedded automatically on a modern VNA, or numerically.
 #
-# Yujie Zhao, University of St. Andrews, Scotland, 22 January 2022
-# Dmitriy Makhnovskiy, Sensing Materials Technology Ltd, UK
+# 21 April 2022
 # DYK team: http://dykteam.com/
 
 print('')
