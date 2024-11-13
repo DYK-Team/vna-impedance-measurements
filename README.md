@@ -8,4 +8,6 @@ You will need the following Python libraries: numpy, matplotlib.pyplot, scipy, s
 
 To cite this article: Azim Uddin et al 2023 Meas. Sci. Technol. in press https://doi.org/10.1088/1361-6501/accd09 
 
+LabVIEW programs for controlling devices during the magneto-impedance measurements can be found in our other repository: https://github.com/DYK-Team/Magneto-impedance_measurements
+
 Also see this project at the University of Plymouth, UK: COMPOSITE MATERIALS FILLED WITH FERROMAGNETIC MICROWIRE INCLUSIONS DEMONSTRATING MICROWAVE RESPONSE TO TEMPERATURE AND TENSILE STRESS (https://pearl-prod.plymouth.ac.uk/handle/10026.1/9488)
